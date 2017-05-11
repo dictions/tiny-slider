@@ -31,9 +31,9 @@ import { Events } from './helpers/events';
 import { jsTransform } from './helpers/jsTransform';
 
 var TRANSFORM = getSupportedProp([
-      'transform', 
-      'WebkitTransform', 
-      'MozTransform', 
+      'transform',
+      'WebkitTransform',
+      'MozTransform',
       'msTransform',
       'OTransform'
     ]),
@@ -148,7 +148,7 @@ export function tns(options) {
       checkIndexBeforeTransform = (mode === 'gallery' || !loop)? true : false,
       // transform
       transformDir = (axis === 'horizontal')? 'X' : 'Y',
-      transformAttrLegacy = (axis === 'horizontal')? 'left' : 'top', 
+      transformAttrLegacy = (axis === 'horizontal')? 'left' : 'top',
       transformAttr = transformAttrLegacy,
       transformType = 'translate',
       transformPrefix = '',
@@ -257,7 +257,7 @@ export function tns(options) {
   var getViewWidth = (function () {
     // horizontal carousel: fluid width && edge padding
     //  => inner wrapper view width
-    if (axis === 'horizontal' && !fixedWidth && edgePadding) { 
+    if (axis === 'horizontal' && !fixedWidth && edgePadding) {
       return function () { return wrapper.clientWidth - (edgePadding + gutter) * 2; };
     // horizontal carousel: fixed width || fluid width but no edge padding
     // vertical carousel
@@ -272,7 +272,7 @@ export function tns(options) {
   function checkSlideCount() {
     // a. slide count < items
     //  => disable nav, controls, autoplay
-    if (slideCount <= items) { 
+    if (slideCount <= items) {
       arrowKeys = false;
 
       var indexTem;
@@ -296,15 +296,15 @@ export function tns(options) {
   function wrapperInit() {
     setAttrs(wrapper, {'data-tns-role': 'wrapper'});
     setAttrs(contentWrapper, {'data-tns-role': 'content-wrapper'});
-    if (axis === 'vertical') { 
-      setAttrs(contentWrapper, {'data-tns-hidden': 'y'}); 
+    if (axis === 'vertical') {
+      setAttrs(contentWrapper, {'data-tns-hidden': 'y'});
     } else {
-      setAttrs(wrapper, {'data-tns-hidden': 'x'}); 
+      setAttrs(wrapper, {'data-tns-hidden': 'x'});
     }
 
     if (mode === 'carousel') {
       var gap = (fixedWidth && edgePadding) ? getFixedWidthEdgePadding() : (edgePadding) ? edgePadding + gutter : 0;
-      contentWrapper.style.cssText = (axis === 'horizontal') ? 'margin: 0 ' + gap + 'px;' : 'padding: ' + gap + 'px 0 ' + edgePadding + 'px; height: ' + getVerticalWrapperHeight() + 'px;'; 
+      contentWrapper.style.cssText = (axis === 'horizontal') ? 'margin: 0 ' + gap + 'px;' : 'padding: ' + gap + 'px 0 ' + edgePadding + 'px; height: ' + getVerticalWrapperHeight() + 'px;';
     }
   }
 
@@ -324,8 +324,8 @@ export function tns(options) {
     if (container.id === '') { container.id = slideId; }
     // add attributes
     setAttrs(container, {
-      'data-tns-role': 'content', 
-      'data-tns-mode': mode, 
+      'data-tns-role': 'content',
+      'data-tns-mode': mode,
       'data-tns-axis': axis
     });
 
@@ -364,7 +364,7 @@ export function tns(options) {
       setAttrs(item, {'aria-hidden': 'true'});
 
       // set slide width & gutter
-      var gutterPosition = (axis === 'horizontal') ? 'right' : 'bottom', 
+      var gutterPosition = (axis === 'horizontal') ? 'right' : 'bottom',
           styles = '';
       if (mode === 'carousel') { styles = 'margin-' + gutterPosition + ': ' + gutter + 'px;'; }
       if (axis === 'horizontal') { styles = 'width: ' + (slideWidth - gutter) + 'px; ' + styles; }
@@ -373,7 +373,7 @@ export function tns(options) {
 
     // clone slides
     if (loop || edgePadding) {
-      var fragmentBefore = document.createDocumentFragment(), 
+      var fragmentBefore = document.createDocumentFragment(),
           fragmentAfter = document.createDocumentFragment();
 
       for (var j = cloneCount; j--;) {
@@ -480,8 +480,8 @@ export function tns(options) {
     for (var i = index; i < index + items; i++) {
       var item = slideItems[i];
       setAttrs(item, {'aria-hidden': 'false'});
-      if (mode === 'gallery') { 
-        item.style.left = slideWidth * (i - index) + 'px'; 
+      if (mode === 'gallery') {
+        item.style.left = slideWidth * (i - index) + 'px';
         item.classList.remove(animateNormal);
         item.classList.add(animateIn);
       }
@@ -546,14 +546,14 @@ export function tns(options) {
       addEvents(autoplayButton, {'click': toggleAnimation});
       if (autoplayHoverPause) {
         addEvents(container, {'mouseover': function () {
-          if (animating) { 
-            stopAction(); 
+          if (animating) {
+            stopAction();
             autoplayHoverStopped = true;
           }
         }});
         addEvents(container, {'mouseout': function () {
-          if (!animating && autoplayHoverStopped) { 
-            startAction(); 
+          if (!animating && autoplayHoverStopped) {
+            startAction();
             autoplayHoverStopped = false;
           }
         }});
@@ -583,8 +583,8 @@ export function tns(options) {
 
   // lazyload
   function lazyLoad() {
-    // var arr = [], 
-    var i = index, 
+    // var arr = [],
+    var i = index,
         len = index + items;
         
     if (edgePadding) {
@@ -620,7 +620,7 @@ export function tns(options) {
     }
 
     if (images.length === 0) {
-      updateContainerHeight(); 
+      updateContainerHeight();
     } else {
       checkImagesLoaded(images);
     }
@@ -634,11 +634,11 @@ export function tns(options) {
     if (images.length === 0) {
       updateContainerHeight();
     } else {
-      setTimeout(function () { 
-        checkImagesLoaded(images); 
+      setTimeout(function () {
+        checkImagesLoaded(images);
       }, 16);
     }
-  } 
+  }
 
   function sliderInit() {
     // First thing first, wrap container with "wrapper > contentWrapper",
@@ -669,8 +669,8 @@ export function tns(options) {
       onInit(info());
     }
 
-    if (nested === 'inner') { 
-      events.emit('innerLoaded', info()); 
+    if (nested === 'inner') {
+      events.emit('innerLoaded', info());
     }
   }
   sliderInit();
@@ -873,9 +873,9 @@ export function tns(options) {
             var item = slideItems[i];
             if (TRANSITIONDURATION) { setDurations(speed, item); }
             if (animateDelay && TRANSITIONDELAY) {
-              var d = animateDelay * (i - indexCached) / 1000; 
-              item.style[TRANSITIONDELAY] = d + 's'; 
-              item.style[ANIMATIONDELAY] = d + 's'; 
+              var d = animateDelay * (i - indexCached) / 1000;
+              item.style[TRANSITIONDELAY] = d + 's';
+              item.style[ANIMATIONDELAY] = d + 's';
             }
             item.classList.remove(animateIn);
             item.classList.add(animateOut);
@@ -888,9 +888,9 @@ export function tns(options) {
             var item = slideItems[i];
             if (TRANSITIONDURATION) { setDurations(speed, item); }
             if (animateDelay && TRANSITIONDELAY) {
-              var d = animateDelay * (i - index) / 1000; 
-              item.style[TRANSITIONDELAY] = d + 's'; 
-              item.style[ANIMATIONDELAY] = d + 's'; 
+              var d = animateDelay * (i - index) / 1000;
+              item.style[TRANSITIONDELAY] = d + 's';
+              item.style[ANIMATIONDELAY] = d + 's';
             }
             item.classList.remove(animateNormal);
             item.classList.add(animateIn);
@@ -911,7 +911,7 @@ export function tns(options) {
   var checkIndex = (function () {
     if (loop) {
       return function () {
-        var leftEdge = (mode === 'carousel')? slideBy + indexMin : indexMin, 
+        var leftEdge = (mode === 'carousel')? slideBy + indexMin : indexMin,
             rightEdge = (mode === 'carousel')? indexMax - slideBy : indexMax;
 
         if (fixedWidth && vw%slideWidth !== 0) { rightEdge -= 1; }
@@ -955,7 +955,7 @@ export function tns(options) {
       for (var i = 0; i < items; i++) {
         var item = slideItemsOut[i];
         if (TRANSITIONDURATION) { setDurations(0, item); }
-        if (animateDelay && TRANSITIONDELAY) { 
+        if (animateDelay && TRANSITIONDELAY) {
           item.style[TRANSITIONDELAY] = item.style[ANIMATIONDELAY] = '';
         }
         item.classList.remove(animateOut);
@@ -978,29 +978,29 @@ export function tns(options) {
     /*
      * update slides, nav, controls after checking ...
      *
-     * => legacy browsers who don't support 'event' 
-     *    have to check event first, otherwise event.target will cause an error 
-     * 
-     * => or 'gallery' mode: 
+     * => legacy browsers who don't support 'event'
+     *    have to check event first, otherwise event.target will cause an error
+     *
+     * => or 'gallery' mode:
      *   + event target is slide item
      *
-     * => or 'carousel' mode: 
-     *   + event target is container, 
+     * => or 'carousel' mode:
+     *   + event target is container,
      *   + event.property is the same with transform attribute
      *
      */
-    if (!event || 
-        mode === 'gallery' && event.target.parentNode === container || 
+    if (!event ||
+        mode === 'gallery' && event.target.parentNode === container ||
         event.target === container && strTrans(event.propertyName) === strTrans(transformAttr)) {
 
-      if (!checkIndexBeforeTransform) { 
+      if (!checkIndexBeforeTransform) {
         var indexTem = index;
         checkIndex();
-        if (index !== indexTem) { 
-          doTransform(0); 
+        if (index !== indexTem) {
+          doTransform(0);
           events.emit('indexChanged', info());
         }
-      } 
+      }
 
       updateSlideStatus();
       updateNavStatus();
@@ -1008,9 +1008,9 @@ export function tns(options) {
       if (lazyload) { lazyLoad(); }
       if (autoHeight) { runAutoHeight(); }
 
-      if (nested === 'inner') { 
-        events.emit('innerLoaded', info()); 
-      } 
+      if (nested === 'inner') {
+        events.emit('innerLoaded', info());
+      }
       removeAttrs(container, 'aria-busy');
       updateIndexCache();
     }
@@ -1104,7 +1104,7 @@ export function tns(options) {
     autoplayResetVisibilityState = document.hidden;
   }
 
-  // 
+  //
   function onKeydownDocument(e) {
     e = e || window.event;
     switch(e.keyCode) {
@@ -1118,8 +1118,8 @@ export function tns(options) {
 
   // change focus
   function changeFocus(blur, focus) {
-    if (typeof blur === 'object' && 
-        typeof focus === 'object' && 
+    if (typeof blur === 'object' &&
+        typeof focus === 'object' &&
         blur === document.activeElement) {
       blur.blur();
       focus.focus();
@@ -1249,7 +1249,7 @@ export function tns(options) {
       disX = parseInt(ev.clientX) - startX;
       disY = parseInt(ev.clientY) - startY;
 
-      if (getTouchDirection(toDegree(disY, disX), 15) === axis) { 
+      if (getTouchDirection(toDegree(disY, disX), 15) === axis) {
         touchedOrDraged = true;
 
         if (e.type === 'touchmove') {
@@ -1314,7 +1314,7 @@ export function tns(options) {
     }
 
     // drag vs click?
-    if (isDragEvent) { 
+    if (isDragEvent) {
       // reset isDragEvent
       isDragEvent = false;
 
@@ -1324,9 +1324,9 @@ export function tns(options) {
         addEvents(target, {'click': function preventClick(e) {
           preventDefaultBehavior(e);
           removeEvents(target, {'click': preventClick});
-        }}); 
+        }});
       }
-    } 
+    }
   }
 
   // === RESIZE FUNCTIONS === //
@@ -1405,7 +1405,7 @@ export function tns(options) {
         updateSlideWidth();
 
         if (mode === 'gallery') {
-          updateSlidePosition(); 
+          updateSlidePosition();
         }
       }
       getSlideEdges();
@@ -1414,16 +1414,16 @@ export function tns(options) {
       updateContentWrapperHeight();
     }
 
-    if (index !== indexTem) { 
+    if (index !== indexTem) {
       events.emit('indexChanged', info());
       updateSlideStatus();
       if (controls && !loop) { updateControlsStatus(); }
     }
 
-    if (nav && items !== itemsTem && !options.navContainer) { 
-      updateNavDisplay(); 
+    if (nav && items !== itemsTem && !options.navContainer) {
+      updateNavDisplay();
       updateNavStatus();
-    } 
+    }
 
     if (index !== indexTem || mode === 'carousel' && !fixedWidth) { doTransform(0); }
     if (autoHeight) { runAutoHeight(); }
@@ -1437,27 +1437,28 @@ export function tns(options) {
     resizeTimer = setTimeout(function () {
       if (vw !== getViewWidth()) {
         resizeTasks();
-        if (nested === 'outer') { 
-          events.emit('outerResized', info(e)); 
+        if (nested === 'outer') {
+          events.emit('outerResized', info(e));
         }
       }
     }, 100); // update after stop resizing for 100 ms
   }
 
   return {
+    onResize: onResize
     getInfo: info,
     events: events,
     goTo: function (targetIndex) {
       // ** goal: renew index and render smoothly **
 
-      // if target is prev or next, 
+      // if target is prev or next,
       // get the index right away
       if (targetIndex === 'next') {
         index += 1;
       } else if (targetIndex === 'prev' || targetIndex === 'previous' ) {
         index -= 1;
       } else {
-      // if target is not prev or next, 
+      // if target is not prev or next,
       // get index by comparing absolute target index and absolute index
 
         // get: absolute index
@@ -1557,15 +1558,15 @@ export function tns(options) {
     },
 
     // $ Private methods, for test only
-    // hasAttr: hasAttr, 
-    // getAttr: getAttr, 
-    // setAttrs: setAttrs, 
-    // removeAttrs: removeAttrs, 
-    // removeEventsByClone: removeEventsByClone, 
-    // getSlideId: getSlideId, 
-    // toDegree: toDegree, 
-    // getTouchDirection: getTouchDirection, 
-    // hideElement: hideElement, 
+    // hasAttr: hasAttr,
+    // getAttr: getAttr,
+    // setAttrs: setAttrs,
+    // removeAttrs: removeAttrs,
+    // removeEventsByClone: removeEventsByClone,
+    // getSlideId: getSlideId,
+    // toDegree: toDegree,
+    // getTouchDirection: getTouchDirection,
+    // hideElement: hideElement,
     // showElement: showElement,
   };
 }
