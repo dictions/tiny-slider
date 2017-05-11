@@ -1445,7 +1445,7 @@ export function tns(options) {
   }
 
   return {
-    onResize: onResize
+    onResize: onResize,
     getInfo: info,
     events: events,
     goTo: function (targetIndex) {
